@@ -1,0 +1,4 @@
+output
+pip-log.txt
+*.pyc
+
