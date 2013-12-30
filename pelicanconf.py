@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 
 AUTHOR = u'Tytouf'
 SITENAME = u'Tytouf\'s Blog'
-SITEURL = 'http://tytouf.github.com/blog'
+SITEURL = ''
 RELATIVE_URLS = True
 
 TIMEZONE = 'Europe/Paris'
