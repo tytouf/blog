@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <title>Tytouf's Blog - Arduino</title>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="http://tytouf.github.com/blog/theme/css/main.css" type="text/css" />
+   
+
+        <!--[if IE]>
+                <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+        <!--[if lte IE 7]>
+                <link rel="stylesheet" type="text/css" media="all" href="http://tytouf.github.com/blog/css/ie.css"/>
+                <script src="http://tytouf.github.com/blog/js/IE8.js" type="text/javascript"></script><![endif]-->
+
+        <!--[if lt IE 7]>
+                <link rel="stylesheet" type="text/css" media="all" href="http://tytouf.github.com/blog/css/ie6.css"/><![endif]-->
+
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="http://tytouf.github.com/blog">Tytouf's Blog </a></h1>
+                <nav><ul>
+                    <li ><a href="http://tytouf.github.com/blog/category/3d-printing.html">3D Printing</a></li>
+                    <li ><a href="http://tytouf.github.com/blog/category/arduino.html">Arduino</a></li>
+                    <li ><a href="http://tytouf.github.com/blog/category/misc.html">misc</a></li>
+                    <li ><a href="http://tytouf.github.com/blog/category/open-data.html">Open Data</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+        
+        
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="http://tytouf.github.com/blog/posts/2012/08/flashing-adafruit-32u4-boards/">Flashage des cartes Adafruit 32u4</a></h1> 
+<footer class="post-info">
+        <abbr class="published" title="2012-08-12T18:23:00">
+                dim. 12 août 2012
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="http://tytouf.github.com/blog/author/christophe-augier.html">Christophe Augier</a>
+        </address>
+<p>In <a href="http://tytouf.github.com/blog/category/arduino.html">Arduino</a>. </p>
+<p>tags: <a href="http://tytouf.github.com/blog/tag/arduino.html">Arduino</a><a href="http://tytouf.github.com/blog/tag/isp.html">ISP</a><a href="http://tytouf.github.com/blog/tag/flashing.html">Flashing</a></p>Translations: 
+        <a href="http://tytouf.github.com/blog/flashing-adafruit-32u4-boards-en.html">en</a>
+</footer><!-- /.post-info --><p>J’avais flashé mes <a href="http://adafruit.com/products/296">cartes Adafruit</a> à base d’atmega32u4 avec le bootloader de la
+Leonardo mais voilà il semblerait que le bootloader ne cohabite pas très bien
+avec les programmes LUFA. J’ai donc dû repasser au Bootloader CDC de base.
+N’ayant pas de programmeur AVR à portée de main j’ai utilisé une carte pour
+programmer une autre en y chargeant auparavant le programme AVRISP-MKII du
+projet Lufa. Pour mémoire voici les opérations à effectuer ainsi que les
+fichiers nécessaires.</p>
+<h2>AVRISP-MKII</h2>
+<p>Pour compiler AVRISP-MKII, modifiez le fichier makefile comme suit :</p>
+<div class="highlight"><pre><span class="nv">MCU</span><span class="o">=</span>atmega32u4
+<span class="nv">ARCH</span><span class="o">=</span>AVR8
+<span class="nv">BOARD</span><span class="o">=</span>ADAFRUITU4
+<span class="nv">F_CPU</span><span class="o">=</span>16000000
+</pre></div>
+
+
+<p>Flasher une carte rescapée avec AVRISP-MKII :</p>
+<div class="highlight"><pre><span class="nv">$ </span>avrdude -p m32u4 -P /dev/ttyACM0 <span class="se">\</span>
+-c avr109 -U flash:w:AVRISP-MKII.hex
+</pre></div>
+
+
+<h2>Bootloader CDC</h2>
+<p>Brancher les deux cartes ensembles :</p>
+<p><img alt="Wiring schema" src="http://tytouf.github.com/blog/images/AVRISP-MKII_programming_bb.png" /></p>
+<p>sher les autres cartes avec le Bootloader:</p>
+<div class="highlight"><pre><span class="nv">$ </span>avrdude -p m32u4 -P usb -c avrispmkII <span class="se">\</span>
+  -U flash:w:BootloaderCDC.hex
+</pre></div>
+
+
+<p>BootloaderCDC.hex peut être téléchargé
+<a href="http://blog.tytouf.fr/wp-content/uploads/2012/08/BootloaderCDC.hex_.txt">ici</a>.</p>
+<p>On s’assure que les fusibles sont correctement configurés :</p>
+<div class="highlight"><pre><span class="nv">$ </span>avrdude -p m32u4 -P usb -c avrispmkII <span class="se">\</span>
+  -U lfuse:w:0xFC:m -U hfuse:w:0xD0:m <span class="se">\</span>
+  -U efuse:w:0xC3:m
+</pre></div>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+        
+
+ 
+            <li><article class="hentry">    
+                <header>
+                        <h1><a href="http://tytouf.github.com/blog/libusb-arduino-en.html" rel="bookmark" title="Permalink to Using libusb to communicate with your Arduino board">Using libusb to communicate with your Arduino board</a></h1>
+                </header>
+                
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2012-07-06T14:55:00">
+                ven. 06 juillet 2012
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="http://tytouf.github.com/blog/author/christophe-augier.html">Christophe Augier</a>
+        </address>
+<p>In <a href="http://tytouf.github.com/blog/category/arduino.html">Arduino</a>. </p>
+<p>tags: <a href="http://tytouf.github.com/blog/tag/arduino.html">Arduino</a><a href="http://tytouf.github.com/blog/tag/libusb.html">libusb</a><a href="http://tytouf.github.com/blog/tag/usb.html">USB</a><a href="http://tytouf.github.com/blog/tag/pyusb.html">PyUSB</a></p></footer><!-- /.post-info -->                <p>Today, I investigated the USB capabilities of my Arduino Leonardo compatible
+boards: the <a href="http://adafruit.com/products/296">Adafruit ATmega32U4</a>. I bought them a few months ago when the
+official Leonardo wasn’t available yet. Besides these board are less expensive
+than the now available <a href="http://adafruit.com/products/849">Leonardo</a>. Anyway, I’d like to develop my own USB ...</p>
+                <a class="readmore" href="http://tytouf.github.com/blog/libusb-arduino-en.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+<p class="paginator">
+    Page 1 / 1
+</p>
+            </ol><!-- /#posts-list -->
+            </section><!-- /#content -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="http://makerspace56.org">Makerspace56</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+                            
+                            <li><a href="http://github.com/tytouf">github</a></li>
+                            <li><a href="http://twitter.com/tytouf">twitter</a></li>
+                            <li><a href="http://www.linkedin.com/pub/christophe-augier/1/562/660">linkedin</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

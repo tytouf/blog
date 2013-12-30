@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Tytouf's Blog</title><link href="http://tytouf.github.com/blog/" rel="alternate"></link><link href="http://tytouf.github.com/blog/feeds/all.atom.xml" rel="self"></link><id>http://tytouf.github.com/blog/</id><updated>2013-12-30T19:56:00+01:00</updated><entry><title>Hello World!</title><link href="http://tytouf.github.com/blog/posts/2013/12/hello-world/" rel="alternate"></link><updated>2013-12-30T19:56:00+01:00</updated><author><name>Christophe Augier</name></author><id>tag:tytouf.github.com/blog,2013-12-30:posts/2013/12/hello-world/</id><summary type="html">&lt;p&gt;Moving my blog to my github user's page. It is now based on &lt;a href="http://getpelican.com"&gt;Pelican&lt;/a&gt;.&lt;/p&gt;</summary><category term="hello"></category><category term="world"></category><category term="pelican"></category></entry><entry><title>Flashage des cartes Adafruit 32u4</title><link href="http://tytouf.github.com/blog/posts/2012/08/flashing-adafruit-32u4-boards/" rel="alternate"></link><updated>2012-08-12T18:23:00+02:00</updated><author><name>Christophe Augier</name></author><id>tag:tytouf.github.com/blog,2012-08-12:posts/2012/08/flashing-adafruit-32u4-boards/</id><summary type="html">&lt;p&gt;J’avais flashé mes &lt;a href="http://adafruit.com/products/296"&gt;cartes Adafruit&lt;/a&gt; à base d’atmega32u4 avec le bootloader de la
+Leonardo mais voilà il semblerait que le bootloader ne cohabite pas très bien
+avec les programmes LUFA. J’ai donc dû repasser au Bootloader CDC de base.
+N’ayant pas de programmeur AVR à portée de main j’ai utilisé une carte pour
+programmer une autre en y chargeant auparavant le programme AVRISP-MKII du
+projet Lufa. Pour mémoire voici les opérations à effectuer ainsi que les
+fichiers nécessaires.&lt;/p&gt;
+&lt;h2&gt;AVRISP-MKII&lt;/h2&gt;
+&lt;p&gt;Pour compiler AVRISP-MKII, modifiez le fichier makefile comme suit :&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;MCU&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;atmega32u4
+&lt;span class="nv"&gt;ARCH&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;AVR8
+&lt;span class="nv"&gt;BOARD&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;ADAFRUITU4
+&lt;span class="nv"&gt;F_CPU&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;16000000
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Flasher une carte rescapée avec AVRISP-MKII :&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;avrdude -p m32u4 -P /dev/ttyACM0 &lt;span class="se"&gt;\&lt;/span&gt;
+-c avr109 -U flash:w:AVRISP-MKII.hex
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Bootloader CDC&lt;/h2&gt;
+&lt;p&gt;Brancher les deux cartes ensembles :&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Wiring schema" src="http://tytouf.github.com/blog/images/AVRISP-MKII_programming_bb.png" /&gt;&lt;/p&gt;
+&lt;p&gt;sher les autres cartes avec le Bootloader:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;avrdude -p m32u4 -P usb -c avrispmkII &lt;span class="se"&gt;\&lt;/span&gt;
+  -U flash:w:BootloaderCDC.hex
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;BootloaderCDC.hex peut être téléchargé
+&lt;a href="http://blog.tytouf.fr/wp-content/uploads/2012/08/BootloaderCDC.hex_.txt"&gt;ici&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;On s’assure que les fusibles sont correctement configurés :&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;avrdude -p m32u4 -P usb -c avrispmkII &lt;span class="se"&gt;\&lt;/span&gt;
+  -U lfuse:w:0xFC:m -U hfuse:w:0xD0:m &lt;span class="se"&gt;\&lt;/span&gt;
+  -U efuse:w:0xC3:m
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="Arduino"></category><category term="ISP"></category><category term="Flashing"></category></entry><entry><title>Flashing Adafruit 32u4 Boards</title><link href="http://tytouf.github.com/blog/flashing-adafruit-32u4-boards-en.html" rel="alternate"></link><updated>2012-08-12T18:23:00+02:00</updated><author><name>Christophe Augier</name></author><id>tag:tytouf.github.com/blog,2012-08-12:flashing-adafruit-32u4-boards-en.html</id><summary type="html">&lt;p&gt;I updated my &lt;a href="http://adafruit.com/products/296"&gt;atmega32u4 based boards&lt;/a&gt; with the Arduino Leonardo bootloader but
+unfortunately the Lufa projects I tried are not so happy with it. I have no clue
+why but I know it works fine with the original Bootloader so I reflased my
+boards with the previous CDC Bootloader. Having no AVR programmer in hand, I
+used one board that I fortunately did not update and flashed it with the Lufa
+AVRISP-MKII programmer. Here are some notes with steps and the needed files.&lt;/p&gt;
+&lt;h2&gt;AVRISP-MKII&lt;/h2&gt;
+&lt;p&gt;To build the AVRISP-MKII project, modify the following lines in the makefile:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;MCU&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;atmega32u4
+&lt;span class="nv"&gt;ARCH&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;AVR8
+&lt;span class="nv"&gt;BOARD&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;ADAFRUITU4
+&lt;span class="nv"&gt;F_CPU&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;16000000
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Flash AVRISP-MKII on the survivor board&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;avrdude -p m32u4 -P /dev/ttyACM0 &lt;span class="se"&gt;\&lt;/span&gt;
+-c avr109 -U flash:w:AVRISP-MKII.hex
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Bootloader CDC&lt;/h2&gt;
+&lt;p&gt;Plug both boards together:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Wiring schema" src="http://tytouf.github.com/blog/images/AVRISP-MKII_programming_bb.png" /&gt;&lt;/p&gt;
+&lt;p&gt;Flash the other boards with the Bootloader:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;avrdude -p m32u4 -P usb -c avrispmkII &lt;span class="se"&gt;\&lt;/span&gt;
+  -U flash:w:BootloaderCDC.hex
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;BootloaderCDC.hex can be found
+&lt;a href="http://blog.tytouf.fr/wp-content/uploads/2012/08/BootloaderCDC.hex_.txt"&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Make sure the fuses are correctly set up:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;avrdude -p m32u4 -P usb -c avrispmkII &lt;span class="se"&gt;\&lt;/span&gt;
+  -U lfuse:w:0xFC:m -U hfuse:w:0xD0:m &lt;span class="se"&gt;\&lt;/span&gt;
+  -U efuse:w:0xC3:m
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="Arduino"></category><category term="ISP"></category><category term="Flashing"></category></entry><entry><title>Réparation sur ma RepRap Huxley</title><link href="http://tytouf.github.com/blog/posts/2012/07/fixing-huxley/" rel="alternate"></link><updated>2012-07-27T10:21:00+02:00</updated><author><name>Christophe Augier</name></author><id>tag:tytouf.github.com/blog,2012-07-27:posts/2012/07/fixing-huxley/</id><summary type="html">&lt;p&gt;Il y a quelques semaines j’ai amené ma RepRap pour faire une démonstration à la
+suite de ma présentation sur le DIY au cours de la semaine de l’innovation sur
+Vannes. Malheureusement, « l’effet démo » a frappé et ma Huxley m’a lâché quand
+j’en avais le plus besoin. Deux pannes consécutives: la première, l’axe Y qui ne
+répondait plus, je vérifie tous les câblages, ça a l’air d’aller mais le plateau
+ne s’actionne toujours pas. Le stresse monte. J’ai déjà rencontré ce problème et
+généralement il suffit d’éteindre et de rallumer l’imprimante pour le résoudre.
+Mais là le coup du « reboot Windows » ne fonctionne pas. C’est pas grave je
+discute avec les gens présents lors de la présentation, leur montre les
+entrailles de la bête, leur explique comment fonctionne le logiciel de découpe
+(Slic3r), l’interface de contrôle (Pronterface) puis au bout d’un moment on me
+presse pour tenter une fois encore d’allumer la machine. Miracle tous les axes
+sont fonctionnels cette fois. La RepRap répond bien, elle commence à imprimer
+quelques niveaux tout semble aller pour le mieux, je retourne participer aux
+discussions tout en gardant un œil sur la pauvre Rossinante.&lt;/p&gt;
+&lt;p&gt;Et au bout d’un moment je remarque que la pièce n’avance pas beaucoup. Pourtant
+la douce mélodie des moteurs pas-à-pas bat son plein et le charriot portant
+l’extrudeur continue sa danse hypnotique. Ah! Mais voilà c’est quoi ce long
+câble blanc au dessus de la table d’impression ? Le tube PTFE conduisant le fil
+plastique avait lâché. L’impression continuait mais l’extrusion du PLA ne se
+faisait plus. Résultat j’arrête la démo, explique le problème, continue de
+discuter et à la fin de la soirée remballe ma Huxley et retourne la queue entre
+les jambes chez moi.&lt;/p&gt;
+&lt;p&gt;Du coup j’en ai profité pour recalibrer ma Huxley tout comme il faut. Pour cela
+je suis le &lt;a href="http://richrap.blogspot.fr/2012/01/slic3r-is-nicer-part-1-settings-and.html"&gt;guide de RichRap en trois parties&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Après quelques déboires avec le tube PTFE (et l’avoir raccourci d’un ou deux
+centimètres) la bête est de nouveau vivante !&lt;/p&gt;</summary><category term="RepRap"></category><category term="Huxley"></category></entry><entry><title>Using libusb to communicate with your Arduino board</title><link href="http://tytouf.github.com/blog/libusb-arduino-en.html" rel="alternate"></link><updated>2012-07-06T14:55:00+02:00</updated><author><name>Christophe Augier</name></author><id>tag:tytouf.github.com/blog,2012-07-06:libusb-arduino-en.html</id><summary type="html">&lt;p&gt;Today, I investigated the USB capabilities of my Arduino Leonardo compatible
+boards: the &lt;a href="http://adafruit.com/products/296"&gt;Adafruit ATmega32U4&lt;/a&gt;. I bought them a few months ago when the
+official Leonardo wasn’t available yet. Besides these board are less expensive
+than the now available &lt;a href="http://adafruit.com/products/849"&gt;Leonardo&lt;/a&gt;. Anyway, I’d like to develop my own USB classes
+to exchange data between a computer and the board. Why develop a new class when
+by default all the Arduino stack provides the CDC-ACM class emulating a serial
+port? Simply because it’s fun ;-)&lt;/p&gt;
+&lt;p&gt;Therefore I began studying the USB protocol and the &lt;a href="http://libusb.org/"&gt;libusb&lt;/a&gt; to write a driver for
+the CDC-ACM class found on the board. This class is relatively simple yet USB
+can get much more complicated. I won’t describe all the details of the USB
+protocol neither the CDC-ACM specifications, so whether you want to read them
+before or directly dive into the code, I’ll let that to your discretion. Here
+are a C program using the &lt;a href="http://libusb.org/"&gt;libusb&lt;/a&gt; with comments and the equivalent Python program
+using &lt;a href="http://sourceforge.net/apps/trac/pyusb/"&gt;PyUSB&lt;/a&gt;.&lt;/p&gt;</summary><category term="Arduino"></category><category term="libusb"></category><category term="USB"></category><category term="PyUSB"></category></entry><entry><title>Open Data et carte des accidents de la route</title><link href="http://tytouf.github.com/blog/posts/2012/03/open-data-traffic-accident/" rel="alternate"></link><updated>2012-03-29T23:36:00+02:00</updated><author><name>Christophe Augier</name></author><id>tag:tytouf.github.com/blog,2012-03-29:posts/2012/03/open-data-traffic-accident/</id><summary type="html">&lt;p&gt;L'&lt;a href="http://en.wikipedia.org/wiki/Open_data"&gt;Open Data&lt;/a&gt; ou les « Données Ouvertes » : une idée magnifique, rendre les
+données publiques pour que tout un chacun puisse y accéder. Mais voilà derrière
+cette idée honorable reste-t-il encore à créer les outils pour trier, recouper
+et visualiser les données pertinentes sur un sujet.&lt;/p&gt;
+&lt;p&gt;C’est dans cette optique que j’ai voulu voir ce que mettait à disposition le
+site de l’état : &lt;a href="http://www.data.gouv.fr"&gt;data.gouv.fr&lt;/a&gt;. Premier constat le site est ouvert depuis
+quelques mois seulement et il y a déjà un grand nombre de jeux de données
+disponibles. Pourtant en regardant de plus près on se rend compte que ces
+données sont souvent déjà synthétisées au lieu de fournir des chiffres ou
+résultats d’analyse bruts. Parfois même, les données sont hébergées sur le site
+internet  du « producteur » et l’url pour y accéder est erronée.&lt;/p&gt;
+&lt;p&gt;Prenons par exemple le cas du &lt;a href="https://www.data.gouv.fr/donnees/view/rapport-sur-les-programmes-de-surveillance-2010---Loire-Bretagne-30382042?xtmc=undefined&amp;amp;xtcr=2"&gt;Rapport sur les programmes de surveillance 2010 –
+Loire Bretagne&lt;/a&gt;. L’url est incorrect, mais on peu en s’inscrivant sur le site
+poser des questions sur le jeu de données. J’ai donc rapporté le problème mais
+ce genre de problème risque de devenir embêtant si ces erreurs sont trop
+fréquentes (ici une bonne partie de ces rapports sont inaccessibles) ou bien
+lorsque l’on souhaite utiliser rapidement le service.&lt;/p&gt;
+&lt;p&gt;En attendant j’ai trouvé un jeu de données très intéressant : &lt;a href="http://www.data.gouv.fr/donnees/view/Informations-sur-la-localisation-des-accidents-corporels--de-la-circulation-sur-5-ann%C3%A9es---France-M%C3%A9-30379821?xtmc=accidents+corporels+circulation&amp;amp;xtcr=1"&gt;Informations sur
+la localisation des accidents corporels de la circulation sur 5 années –
+France-Métropolitaine&lt;/a&gt;. J’ai développé un script python pour extraire ces données
+et les formater afin de pouvoir les afficher sur une carte via &lt;a href="http://leaflet.cloudmade.com"&gt;Leaflet&lt;/a&gt;. Plus
+d’infos et la carte ici, le tout sous licence &lt;a href="http://creativecommons.org/licenses/by/3.0"&gt;CC&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Exemple sur le Morbihan" src="http://tytouf.github.com/blog/images/opendata_map_traffic_accident.png" /&gt;&lt;/p&gt;
+&lt;p&gt;J’ajouterai pour finir que bien que certains jeux de données sont uniquement
+disponibles sous la forme de fichiers au format propriétaire la plupart du temps
+ils sont accessibles sous forme de .csv ou .xml ou .ods. Il y a donc il
+semblerait une réelle volonté d’utiliser des outils libres en plus de rendre les
+données libres :-)&lt;/p&gt;</summary><category term="open-data"></category><category term="leaflet"></category><category term="python"></category></entry><entry><title>Open Data and a map of traffic accident (France)</title><link href="http://tytouf.github.com/blog/open-data-traffic-accident-en.html" rel="alternate"></link><updated>2012-03-29T23:36:00+02:00</updated><author><name>Christophe Augier</name></author><id>tag:tytouf.github.com/blog,2012-03-29:open-data-traffic-accident-en.html</id><summary type="html">&lt;p&gt;&lt;a href="http://en.wikipedia.org/wiki/Open_data"&gt;Open Data&lt;/a&gt; is a beautiful idea: make data public and available to anyone. Yet
+while this idea is very honorable, without tools to sort, cross-reference, match
+and visualize data it loses its meaning.&lt;/p&gt;
+&lt;p&gt;With this in my mind I went to see what kind of datasets and tools where
+published on &lt;a href="http://www.data.gouv.fr"&gt;data.gouv.fr&lt;/a&gt;, a website opened recently by the French government.
+I found some interesting dataset related to traffic accident and decided to work
+on a map to display the localization of the accidents. I developed a python
+script to extract the data from the ODS files and format them  so that I can
+display them on a map rendered using &lt;a href="http://leaflet.cloudmade.com"&gt;Leaflet&lt;/a&gt;. More details (sorry in French) and
+the map &lt;a href="http://opendata.tytouf.fr"&gt;here&lt;/a&gt;, the tools are licensed under the &lt;a href="http://creativecommons.org/licenses/by/3.0"&gt;Creative Commons&lt;/a&gt;.&lt;/p&gt;</summary><category term="open-data"></category><category term="leaflet"></category><category term="python"></category></entry></feed>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Tytouf's Blog</title><link href="http://tytouf.github.com/blog/" rel="alternate"></link><link href="http://tytouf.github.com/blog/feeds/open-data.atom.xml" rel="self"></link><id>http://tytouf.github.com/blog/</id><updated>2012-03-29T23:36:00+02:00</updated><entry><title>Open Data et carte des accidents de la route</title><link href="http://tytouf.github.com/blog/posts/2012/03/open-data-traffic-accident/" rel="alternate"></link><updated>2012-03-29T23:36:00+02:00</updated><author><name>Christophe Augier</name></author><id>tag:tytouf.github.com/blog,2012-03-29:posts/2012/03/open-data-traffic-accident/</id><summary type="html">&lt;p&gt;L'&lt;a href="http://en.wikipedia.org/wiki/Open_data"&gt;Open Data&lt;/a&gt; ou les « Données Ouvertes » : une idée magnifique, rendre les
+données publiques pour que tout un chacun puisse y accéder. Mais voilà derrière
+cette idée honorable reste-t-il encore à créer les outils pour trier, recouper
+et visualiser les données pertinentes sur un sujet.&lt;/p&gt;
+&lt;p&gt;C’est dans cette optique que j’ai voulu voir ce que mettait à disposition le
+site de l’état : &lt;a href="http://www.data.gouv.fr"&gt;data.gouv.fr&lt;/a&gt;. Premier constat le site est ouvert depuis
+quelques mois seulement et il y a déjà un grand nombre de jeux de données
+disponibles. Pourtant en regardant de plus près on se rend compte que ces
+données sont souvent déjà synthétisées au lieu de fournir des chiffres ou
+résultats d’analyse bruts. Parfois même, les données sont hébergées sur le site
+internet  du « producteur » et l’url pour y accéder est erronée.&lt;/p&gt;
+&lt;p&gt;Prenons par exemple le cas du &lt;a href="https://www.data.gouv.fr/donnees/view/rapport-sur-les-programmes-de-surveillance-2010---Loire-Bretagne-30382042?xtmc=undefined&amp;amp;xtcr=2"&gt;Rapport sur les programmes de surveillance 2010 –
+Loire Bretagne&lt;/a&gt;. L’url est incorrect, mais on peu en s’inscrivant sur le site
+poser des questions sur le jeu de données. J’ai donc rapporté le problème mais
+ce genre de problème risque de devenir embêtant si ces erreurs sont trop
+fréquentes (ici une bonne partie de ces rapports sont inaccessibles) ou bien
+lorsque l’on souhaite utiliser rapidement le service.&lt;/p&gt;
+&lt;p&gt;En attendant j’ai trouvé un jeu de données très intéressant : &lt;a href="http://www.data.gouv.fr/donnees/view/Informations-sur-la-localisation-des-accidents-corporels--de-la-circulation-sur-5-ann%C3%A9es---France-M%C3%A9-30379821?xtmc=accidents+corporels+circulation&amp;amp;xtcr=1"&gt;Informations sur
+la localisation des accidents corporels de la circulation sur 5 années –
+France-Métropolitaine&lt;/a&gt;. J’ai développé un script python pour extraire ces données
+et les formater afin de pouvoir les afficher sur une carte via &lt;a href="http://leaflet.cloudmade.com"&gt;Leaflet&lt;/a&gt;. Plus
+d’infos et la carte ici, le tout sous licence &lt;a href="http://creativecommons.org/licenses/by/3.0"&gt;CC&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Exemple sur le Morbihan" src="http://tytouf.github.com/blog/images/opendata_map_traffic_accident.png" /&gt;&lt;/p&gt;
+&lt;p&gt;J’ajouterai pour finir que bien que certains jeux de données sont uniquement
+disponibles sous la forme de fichiers au format propriétaire la plupart du temps
+ils sont accessibles sous forme de .csv ou .xml ou .ods. Il y a donc il
+semblerait une réelle volonté d’utiliser des outils libres en plus de rendre les
+données libres :-)&lt;/p&gt;</summary><category term="open-data"></category><category term="leaflet"></category><category term="python"></category></entry></feed>
