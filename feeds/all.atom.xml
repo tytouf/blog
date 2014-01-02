@@ -147,4 +147,4 @@ I found some interesting dataset related to traffic accident and decided to work
 on a map to display the localization of the accidents. I developed a python
 script to extract the data from the ODS files and format them  so that I can
 display them on a map rendered using &lt;a href="http://leaflet.cloudmade.com"&gt;Leaflet&lt;/a&gt;. More details (sorry in French) and
-the map &lt;a href="http://opendata.tytouf.fr"&gt;here&lt;/a&gt;, the tools are licensed under the &lt;a href="http://creativecommons.org/licenses/by/3.0"&gt;Creative Commons&lt;/a&gt;.&lt;/p&gt;</summary><category term="open-data"></category><category term="leaflet"></category><category term="python"></category></entry></feed>
+the map &lt;a href="http://tytouf.github.io/traffic-accident-map"&gt;here&lt;/a&gt;, the tools are licensed under the &lt;a href="http://creativecommons.org/licenses/by/3.0"&gt;Creative Commons&lt;/a&gt;.&lt;/p&gt;</summary><category term="open-data"></category><category term="leaflet"></category><category term="python"></category></entry></feed>
