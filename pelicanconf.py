@@ -27,6 +27,7 @@ LINKS =  (('Makerspace56', 'http://makerspace56.org'),)
 # Social widget
 SOCIAL = (('github', 'http://github.com/tytouf'),
           ('twitter', 'http://twitter.com/tytouf'),
+          ('stackoverflow', 'http://stackoverflow.com/users/2637585/christophe-augier'),
           ('linkedin', 'http://www.linkedin.com/pub/christophe-augier/1/562/660'),)
 
 DEFAULT_PAGINATION = 5
