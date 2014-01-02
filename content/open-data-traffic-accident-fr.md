@@ -43,7 +43,7 @@ données libres :-)
 [1]: http://en.wikipedia.org/wiki/Open_data
 [2]: http://www.data.gouv.fr
 [3]: http://leaflet.cloudmade.com
-[4]: http://opendata.tytouf.fr
+[4]: http://tytouf.github.io/traffic-accident-map
 [5]: http://creativecommons.org/licenses/by/3.0
 [6]: https://www.data.gouv.fr/donnees/view/rapport-sur-les-programmes-de-surveillance-2010---Loire-Bretagne-30382042?xtmc=undefined&xtcr=2
 [7]: http://www.data.gouv.fr/donnees/view/Informations-sur-la-localisation-des-accidents-corporels--de-la-circulation-sur-5-ann%C3%A9es---France-M%C3%A9-30379821?xtmc=accidents+corporels+circulation&xtcr=1

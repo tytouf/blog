@@ -21,5 +21,5 @@ the map [here][4], the tools are licensed under the [Creative Commons][5].
 [1]: http://en.wikipedia.org/wiki/Open_data
 [2]: http://www.data.gouv.fr
 [3]: http://leaflet.cloudmade.com
-[4]: http://opendata.tytouf.fr
+[4]: http://tytouf.github.io/traffic-accident-map
 [5]: http://creativecommons.org/licenses/by/3.0
