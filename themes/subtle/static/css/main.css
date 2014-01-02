@@ -316,7 +316,7 @@ img.left, figure.left {float: right; margin: 0 0 2em 2em;}
 
 		.social a[href*='facebook.com'] {background-image: url('../images/icons/facebook.png');
 		background-size: 16px 16px; }
-		.social a[href*='twitter.com'] {background-image: url('../images/icons/twitter_alt.png');
+		.social a[href*='twitter.com'] {background-image: url('../images/icons/twitter.png');
 		background-size: 16px 16px;  }
 		.social a[href*='quora.com'] {background-image: url('../images/icons/quora.png');
 		background-size: 16px 16px; }
@@ -327,6 +327,10 @@ img.left, figure.left {float: right; margin: 0 0 2em 2em;}
 		.social a[href*='instapaper.com'] {background-image: url('../images/icons/instapaper.png');
 		background-size: 16px 16px; }
 		.social a[href*='hypem.com'] {background-image: url('../images/icons/hype_machine.png');
+		background-size: 16px 16px; }
+		.social a[href*='linkedin.com'] {background-image: url('../images/icons/linkedin.png');
+		background-size: 16px 16px; }
+		.social a[href*='stackoverflow.com'] {background-image: url('../images/icons/stackoverflow.png');
 		background-size: 16px 16px; }
 
 
