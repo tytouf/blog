@@ -30,7 +30,7 @@ En attendant j’ai trouvé un jeu de données très intéressant : [Information
 la localisation des accidents corporels de la circulation sur 5 années –
 France-Métropolitaine][7]. J’ai développé un script python pour extraire ces données
 et les formater afin de pouvoir les afficher sur une carte via [Leaflet][3]. Plus
-d’infos et la carte ici, le tout sous licence [CC][5].
+d’infos et la carte [ici][4], le tout sous licence [CC][5].
 
 ![Exemple sur le Morbihan]({filename}/images/opendata_map_traffic_accident.png)
 
