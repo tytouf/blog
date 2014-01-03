@@ -46,17 +46,17 @@
 <p>tags: <a href="http://tytouf.github.com/blog/tag/arduino.html">Arduino</a><a href="http://tytouf.github.com/blog/tag/libusb.html">libusb</a><a href="http://tytouf.github.com/blog/tag/usb.html">USB</a><a href="http://tytouf.github.com/blog/tag/pyusb.html">PyUSB</a></p></footer><!-- /.post-info --><p>Today, I investigated the USB capabilities of my Arduino Leonardo compatible
 boards: the <a href="http://adafruit.com/products/296">Adafruit ATmega32U4</a>. I bought them a few months ago when the
 official Leonardo wasn’t available yet. Besides these board are less expensive
-than the now available <a href="http://adafruit.com/products/849">Leonardo</a>. Anyway, I’d like to develop my own USB classes
-to exchange data between a computer and the board. Why develop a new class when
-by default all the Arduino stack provides the CDC-ACM class emulating a serial
-port? Simply because it’s fun ;-)</p>
-<p>Therefore I began studying the USB protocol and the <a href="http://libusb.org/">libusb</a> to write a driver for
-the CDC-ACM class found on the board. This class is relatively simple yet USB
-can get much more complicated. I won’t describe all the details of the USB
-protocol neither the CDC-ACM specifications, so whether you want to read them
-before or directly dive into the code, I’ll let that to your discretion. Here
-are a C program using the <a href="http://libusb.org/">libusb</a> with comments and the equivalent Python program
-using <a href="http://sourceforge.net/apps/trac/pyusb/">PyUSB</a>.</p>                </article>
+than the now available <a href="http://adafruit.com/products/849">Leonardo</a>. Anyway, I’d like to develop my own USB
+classes to exchange data between a computer and the board. Why develop a new
+class when by default all the Arduino stack provides the CDC-ACM class emulating
+a serial port? Simply because it’s fun ;-)</p>
+<p>Therefore I began studying the USB protocol and the <a href="http://libusb.org/">libusb</a> to write a
+driver for the CDC-ACM class found on the board. This class is relatively simple
+yet USB can get much more complicated. I won’t describe all the details of the
+USB protocol neither the CDC-ACM specifications, so whether you want to read
+them before or directly dive into the code, I’ll let that to your discretion.
+Here are a <a href="https://raw.github.com/tytouf/libusb-cdc-example/master/cdc_example.c">C program</a> using the <a href="http://libusb.org/">libusb</a> with comments and the equivalent
+<a href="https://raw.github.com/tytouf/libusb-cdc-example/master/cdc_example.py">Python program</a> using <a href="http://sourceforge.net/apps/trac/pyusb/">PyUSB</a>.</p>                </article>
 <p class="paginator">
     Page 1 / 1
 </p>

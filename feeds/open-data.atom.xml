@@ -20,7 +20,7 @@ lorsque l’on souhaite utiliser rapidement le service.&lt;/p&gt;
 la localisation des accidents corporels de la circulation sur 5 années –
 France-Métropolitaine&lt;/a&gt;. J’ai développé un script python pour extraire ces données
 et les formater afin de pouvoir les afficher sur une carte via &lt;a href="http://leaflet.cloudmade.com"&gt;Leaflet&lt;/a&gt;. Plus
-d’infos et la carte ici, le tout sous licence &lt;a href="http://creativecommons.org/licenses/by/3.0"&gt;CC&lt;/a&gt;.&lt;/p&gt;
+d’infos et la carte &lt;a href="http://tytouf.github.io/traffic-accident-map"&gt;ici&lt;/a&gt;, le tout sous licence &lt;a href="http://creativecommons.org/licenses/by/3.0"&gt;CC&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;img alt="Exemple sur le Morbihan" src="http://tytouf.github.com/blog/images/opendata_map_traffic_accident.png" /&gt;&lt;/p&gt;
 &lt;p&gt;J’ajouterai pour finir que bien que certains jeux de données sont uniquement
 disponibles sous la forme de fichiers au format propriétaire la plupart du temps

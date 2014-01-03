@@ -39,14 +39,14 @@ fichiers nécessaires.&lt;/p&gt;
 &lt;/pre&gt;&lt;/div&gt;</summary><category term="Arduino"></category><category term="ISP"></category><category term="Flashing"></category></entry><entry><title>Using libusb to communicate with your Arduino board</title><link href="http://tytouf.github.com/blog/libusb-arduino-en.html" rel="alternate"></link><updated>2012-07-06T14:55:00+02:00</updated><author><name>Christophe Augier</name></author><id>tag:tytouf.github.com/blog,2012-07-06:libusb-arduino-en.html</id><summary type="html">&lt;p&gt;Today, I investigated the USB capabilities of my Arduino Leonardo compatible
 boards: the &lt;a href="http://adafruit.com/products/296"&gt;Adafruit ATmega32U4&lt;/a&gt;. I bought them a few months ago when the
 official Leonardo wasn’t available yet. Besides these board are less expensive
-than the now available &lt;a href="http://adafruit.com/products/849"&gt;Leonardo&lt;/a&gt;. Anyway, I’d like to develop my own USB classes
-to exchange data between a computer and the board. Why develop a new class when
-by default all the Arduino stack provides the CDC-ACM class emulating a serial
-port? Simply because it’s fun ;-)&lt;/p&gt;
-&lt;p&gt;Therefore I began studying the USB protocol and the &lt;a href="http://libusb.org/"&gt;libusb&lt;/a&gt; to write a driver for
-the CDC-ACM class found on the board. This class is relatively simple yet USB
-can get much more complicated. I won’t describe all the details of the USB
-protocol neither the CDC-ACM specifications, so whether you want to read them
-before or directly dive into the code, I’ll let that to your discretion. Here
-are a C program using the &lt;a href="http://libusb.org/"&gt;libusb&lt;/a&gt; with comments and the equivalent Python program
-using &lt;a href="http://sourceforge.net/apps/trac/pyusb/"&gt;PyUSB&lt;/a&gt;.&lt;/p&gt;</summary><category term="Arduino"></category><category term="libusb"></category><category term="USB"></category><category term="PyUSB"></category></entry></feed>
+than the now available &lt;a href="http://adafruit.com/products/849"&gt;Leonardo&lt;/a&gt;. Anyway, I’d like to develop my own USB
+classes to exchange data between a computer and the board. Why develop a new
+class when by default all the Arduino stack provides the CDC-ACM class emulating
+a serial port? Simply because it’s fun ;-)&lt;/p&gt;
+&lt;p&gt;Therefore I began studying the USB protocol and the &lt;a href="http://libusb.org/"&gt;libusb&lt;/a&gt; to write a
+driver for the CDC-ACM class found on the board. This class is relatively simple
+yet USB can get much more complicated. I won’t describe all the details of the
+USB protocol neither the CDC-ACM specifications, so whether you want to read
+them before or directly dive into the code, I’ll let that to your discretion.
+Here are a &lt;a href="https://raw.github.com/tytouf/libusb-cdc-example/master/cdc_example.c"&gt;C program&lt;/a&gt; using the &lt;a href="http://libusb.org/"&gt;libusb&lt;/a&gt; with comments and the equivalent
+&lt;a href="https://raw.github.com/tytouf/libusb-cdc-example/master/cdc_example.py"&gt;Python program&lt;/a&gt; using &lt;a href="http://sourceforge.net/apps/trac/pyusb/"&gt;PyUSB&lt;/a&gt;.&lt;/p&gt;</summary><category term="Arduino"></category><category term="libusb"></category><category term="USB"></category><category term="PyUSB"></category></entry></feed>

@@ -101,17 +101,17 @@ je suis le &lt;a href="http://richrap.blogspot.fr/2012/01/slic3r-is-nicer-part-1
 centimètres) la bête est de nouveau vivante !&lt;/p&gt;</summary><category term="RepRap"></category><category term="Huxley"></category></entry><entry><title>Using libusb to communicate with your Arduino board</title><link href="http://tytouf.github.com/blog/libusb-arduino-en.html" rel="alternate"></link><updated>2012-07-06T14:55:00+02:00</updated><author><name>Christophe Augier</name></author><id>tag:tytouf.github.com/blog,2012-07-06:libusb-arduino-en.html</id><summary type="html">&lt;p&gt;Today, I investigated the USB capabilities of my Arduino Leonardo compatible
 boards: the &lt;a href="http://adafruit.com/products/296"&gt;Adafruit ATmega32U4&lt;/a&gt;. I bought them a few months ago when the
 official Leonardo wasn’t available yet. Besides these board are less expensive
-than the now available &lt;a href="http://adafruit.com/products/849"&gt;Leonardo&lt;/a&gt;. Anyway, I’d like to develop my own USB classes
-to exchange data between a computer and the board. Why develop a new class when
-by default all the Arduino stack provides the CDC-ACM class emulating a serial
-port? Simply because it’s fun ;-)&lt;/p&gt;
-&lt;p&gt;Therefore I began studying the USB protocol and the &lt;a href="http://libusb.org/"&gt;libusb&lt;/a&gt; to write a driver for
-the CDC-ACM class found on the board. This class is relatively simple yet USB
-can get much more complicated. I won’t describe all the details of the USB
-protocol neither the CDC-ACM specifications, so whether you want to read them
-before or directly dive into the code, I’ll let that to your discretion. Here
-are a C program using the &lt;a href="http://libusb.org/"&gt;libusb&lt;/a&gt; with comments and the equivalent Python program
-using &lt;a href="http://sourceforge.net/apps/trac/pyusb/"&gt;PyUSB&lt;/a&gt;.&lt;/p&gt;</summary><category term="Arduino"></category><category term="libusb"></category><category term="USB"></category><category term="PyUSB"></category></entry><entry><title>Open Data et carte des accidents de la route</title><link href="http://tytouf.github.com/blog/posts/2012/03/open-data-traffic-accident/" rel="alternate"></link><updated>2012-03-29T23:36:00+02:00</updated><author><name>Christophe Augier</name></author><id>tag:tytouf.github.com/blog,2012-03-29:posts/2012/03/open-data-traffic-accident/</id><summary type="html">&lt;p&gt;L'&lt;a href="http://en.wikipedia.org/wiki/Open_data"&gt;Open Data&lt;/a&gt; ou les « Données Ouvertes » : une idée magnifique, rendre les
+than the now available &lt;a href="http://adafruit.com/products/849"&gt;Leonardo&lt;/a&gt;. Anyway, I’d like to develop my own USB
+classes to exchange data between a computer and the board. Why develop a new
+class when by default all the Arduino stack provides the CDC-ACM class emulating
+a serial port? Simply because it’s fun ;-)&lt;/p&gt;
+&lt;p&gt;Therefore I began studying the USB protocol and the &lt;a href="http://libusb.org/"&gt;libusb&lt;/a&gt; to write a
+driver for the CDC-ACM class found on the board. This class is relatively simple
+yet USB can get much more complicated. I won’t describe all the details of the
+USB protocol neither the CDC-ACM specifications, so whether you want to read
+them before or directly dive into the code, I’ll let that to your discretion.
+Here are a &lt;a href="https://raw.github.com/tytouf/libusb-cdc-example/master/cdc_example.c"&gt;C program&lt;/a&gt; using the &lt;a href="http://libusb.org/"&gt;libusb&lt;/a&gt; with comments and the equivalent
+&lt;a href="https://raw.github.com/tytouf/libusb-cdc-example/master/cdc_example.py"&gt;Python program&lt;/a&gt; using &lt;a href="http://sourceforge.net/apps/trac/pyusb/"&gt;PyUSB&lt;/a&gt;.&lt;/p&gt;</summary><category term="Arduino"></category><category term="libusb"></category><category term="USB"></category><category term="PyUSB"></category></entry><entry><title>Open Data et carte des accidents de la route</title><link href="http://tytouf.github.com/blog/posts/2012/03/open-data-traffic-accident/" rel="alternate"></link><updated>2012-03-29T23:36:00+02:00</updated><author><name>Christophe Augier</name></author><id>tag:tytouf.github.com/blog,2012-03-29:posts/2012/03/open-data-traffic-accident/</id><summary type="html">&lt;p&gt;L'&lt;a href="http://en.wikipedia.org/wiki/Open_data"&gt;Open Data&lt;/a&gt; ou les « Données Ouvertes » : une idée magnifique, rendre les
 données publiques pour que tout un chacun puisse y accéder. Mais voilà derrière
 cette idée honorable reste-t-il encore à créer les outils pour trier, recouper
 et visualiser les données pertinentes sur un sujet.&lt;/p&gt;
@@ -132,7 +132,7 @@ lorsque l’on souhaite utiliser rapidement le service.&lt;/p&gt;
 la localisation des accidents corporels de la circulation sur 5 années –
 France-Métropolitaine&lt;/a&gt;. J’ai développé un script python pour extraire ces données
 et les formater afin de pouvoir les afficher sur une carte via &lt;a href="http://leaflet.cloudmade.com"&gt;Leaflet&lt;/a&gt;. Plus
-d’infos et la carte ici, le tout sous licence &lt;a href="http://creativecommons.org/licenses/by/3.0"&gt;CC&lt;/a&gt;.&lt;/p&gt;
+d’infos et la carte &lt;a href="http://tytouf.github.io/traffic-accident-map"&gt;ici&lt;/a&gt;, le tout sous licence &lt;a href="http://creativecommons.org/licenses/by/3.0"&gt;CC&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;img alt="Exemple sur le Morbihan" src="http://tytouf.github.com/blog/images/opendata_map_traffic_accident.png" /&gt;&lt;/p&gt;
 &lt;p&gt;J’ajouterai pour finir que bien que certains jeux de données sont uniquement
 disponibles sous la forme de fichiers au format propriétaire la plupart du temps
